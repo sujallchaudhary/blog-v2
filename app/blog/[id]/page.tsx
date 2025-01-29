@@ -12,7 +12,6 @@ async function fetchChapterData(slug: string) {
     headers: {
       'Content-Type': 'application/json',
     },
-    cache: 'no-store',
   });
 
   if (!res.ok) {
@@ -33,7 +32,6 @@ const fetchMetaData = async (slug: string) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    cache: 'no-store',
   });
 
   if (!res.ok) {
