@@ -1,6 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Space_Grotesk } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 import { MainNav } from '@/components/main-nav';
@@ -8,7 +8,7 @@ import { Footer } from '@/components/footer';
 import Script from 'next/script';
 import NextTopLoader from 'nextjs-toploader';
 
-const inter = Inter({ subsets: ['latin'] });
+const font = Space_Grotesk({ subsets: ["latin"], weight: ["300", "400", "600", "700"] });
 
 export const metadata: Metadata = {
   title: "Sujal Unfolded",
@@ -68,7 +68,7 @@ export default function RootLayout({
 `}
 </Script>
       </head>
-      <body className={inter.className}>
+      <body className={font.className}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <NextTopLoader color='#4682B4' showSpinner={false}/>
           <MainNav />
