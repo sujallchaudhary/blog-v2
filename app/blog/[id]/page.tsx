@@ -46,21 +46,43 @@ const fetchMetaData = async (slug: string) => {
   return data;
 };
 
+const fetchPageViews = async(slug: string) => {
+  const res = await fetch(`${api}/blog/views/${slug}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'cache-control': 'no-cache',
+    },
+    cache: 'no-store',
+  });
+
+  if (!res.ok) {
+    return null;
+  }
+
+  const data = await res.json();
+  if (!data.success) {
+    return null;
+  }
+
+  return data.data;
+};
+
 export async function generateMetadata({ params }: { params: { id: string } }) {
   const chapterResponse = await fetchMetaData(params.id);
   if (!chapterResponse) {
     return {
-      title: 'Chapter Not Found - Sujal Unfolded',
-      description: 'This chapter is not available.',
+      title: 'Blog Not Found - Sujal Unfolded',
+      description: 'This Blog is not available.',
       openGraph: {
-        title: 'Chapter Not Found - Sujal Unfolded',
-        description: 'This chapter is not available.',
+        title: 'Blog Not Found - Sujal Unfolded',
+        description: 'This Blog is not available.',
         type: 'website',
       },
       twitter: {
         card: 'summary',
-        title: 'Chapter Not Found - Sujal Unfolded',
-        description: 'This chapter is not available.',
+        title: 'Blog Not Found - Sujal Unfolded',
+        description: 'This Blog is not available.',
       },
     };
   }
@@ -94,6 +116,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 
 export default async function ChapterPage({ params }: { params: { id: string } }) {
   const chapterResponse = await fetchChapterData(params.id);
+  const pageViews = await fetchPageViews(params.id);
 
   if (!chapterResponse) {
     notFound();
@@ -111,7 +134,7 @@ export default async function ChapterPage({ params }: { params: { id: string } }
             title={data.title}
             author={data.author.name}
             publishedAt={data.createdAt}
-            views={data.views}
+            views={pageViews.views}
             content={data.content}
             thumbnail={data.thumbnail}
             aiDiscussionAudio={data.aiDiscussionAudio}

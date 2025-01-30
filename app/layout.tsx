@@ -6,6 +6,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { MainNav } from '@/components/main-nav';
 import { Footer } from '@/components/footer';
 import Script from 'next/script';
+import NextTopLoader from 'nextjs-toploader';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -69,6 +70,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <NextTopLoader color='#4682B4' showSpinner={false}/>
           <MainNav />
           {children}
           <Toaster />

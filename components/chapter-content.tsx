@@ -110,7 +110,7 @@ export function ChapterContent({
       </Button>
       )}
       
-      <div className="max-w-4xl mx-auto px-4 py-8 space-y-6 text-gray-800 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: content }} />
+      <div className="max-w-4xl w-full mx-auto px-4 py-8 space-y-6 text-gray-800 dark:text-gray-300 break-words whitespace-normal overflow-hidden" dangerouslySetInnerHTML={{ __html: content }} />
     </div>
   );
 }
