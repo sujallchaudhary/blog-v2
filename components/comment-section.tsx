@@ -26,7 +26,6 @@ export function CommentSection({ chapterId }: { chapterId: string }) {
   const [newComment, setNewComment] = useState('');
   const [newName, setNewName] = useState('');
   const [isExpanded, setIsExpanded] = useState(false);
-  const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -138,7 +137,7 @@ export function CommentSection({ chapterId }: { chapterId: string }) {
           className="mb-4"
           id='comment'
         />
-        <Button type="submit">Submit Comment</Button>
+        <Button className='text-white' type="submit">Submit Comment</Button>
       </form>
 
       <div className="space-y-6">

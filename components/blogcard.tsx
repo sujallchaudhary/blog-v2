@@ -26,6 +26,7 @@ function BlogCard({ title, slug, excerpt, author, views, thumbnail, createdAt }:
   
     return (
       <Card className="mb-6 overflow-hidden hover:shadow-lg transition-shadow">
+       <Link href={`/blog/${slug}`} >
         <div className="grid md:grid-cols-3 gap-4">
           <div className="aspect-video md:aspect-none md:h-full">
             <Image
@@ -38,9 +39,8 @@ function BlogCard({ title, slug, excerpt, author, views, thumbnail, createdAt }:
           </div>
           <div className="md:col-span-2 p-6">
             <CardHeader className="p-0">
-              <Link href={`/blog/${slug}`} className="hover:text-white">
-                <h2 className="text-2xl font-bold mb-2">{title}</h2>
-              </Link>
+
+                <h2 className="text-2xl font-bold mb-2 hover:text-primary">{title}</h2>
             </CardHeader>
             <CardContent className="p-0 my-4">
               <p className="text-muted-foreground line-clamp-3">{excerpt}</p>
@@ -55,6 +55,7 @@ function BlogCard({ title, slug, excerpt, author, views, thumbnail, createdAt }:
             </CardFooter>
           </div>
         </div>
+        </Link>
       </Card>
     );
   }
